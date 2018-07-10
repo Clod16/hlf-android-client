@@ -63,7 +63,7 @@ dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 
-    implementation files('/Users/ascatox/Documents/Sviluppo/workspace_dcot/android-fabric-sdk/fabric-sdk-java-1.1.0-alpha.jar')
+    implementation files('libs/fabric-sdk-java-1.1.0-alpha.jar')
 
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
     compile group: 'org.slf4j', name: 'slf4j-android', version: '1.7.21'

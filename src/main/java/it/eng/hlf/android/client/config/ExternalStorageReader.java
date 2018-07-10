@@ -1,15 +1,12 @@
 package it.eng.hlf.android.client.config;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Environment;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.nio.file.Paths;
 
 import it.eng.hlf.android.client.exception.HLFClientException;
 
