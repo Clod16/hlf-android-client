@@ -56,6 +56,7 @@ public class ConfigManager {
             ObjectMapper objectMapper = new ObjectMapper();
             Configuration configuration = objectMapper.readValue(resource, Configuration.class);
             //log.debug("Configuration JSON is\n" + resource.getPath());
+            configuration.setContext(context);
             return configuration;
         } catch (Exception e) {
             log.error(e.getMessage());

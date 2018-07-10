@@ -1,6 +1,10 @@
 package it.eng.hlf.android.client.config;
 
 
+import android.content.Context;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +17,7 @@ public class Configuration {
     private Integer timeout;
     private String cryptoconfigdir;
     private boolean tls;
+    private Context context;
 
     private List<Organization> organizations;
     private Chaincode chaincode;
@@ -117,5 +122,15 @@ public class Configuration {
     @Override
     public String toString() {
         return "Configuration{" + "name='" + name + '\'' + ", type='" + type + '\'' + ", channelName='" + channelName + '\'' + ", timeout=" + timeout + ", cryptoconfigdir='" + cryptoconfigdir + '\'' + ", organizations=" + organizations + '}';
+    }
+
+    @JsonIgnore
+    public Context getContext() {
+        return context;
+    }
+
+    @JsonIgnore
+    public void setContext(Context context) {
+        this.context = context;
     }
 }

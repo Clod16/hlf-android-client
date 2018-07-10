@@ -56,7 +56,7 @@ final public class FabricLedgerClient implements LedgerClient {
 
     @Override
     public String getData() throws HLFClientException {
-        return doQueryByJson(Function.getData, new ArrayList<String>());
+        return doQueryByJson(Function.getData, new ArrayList<>());
     }
 
     @Override
