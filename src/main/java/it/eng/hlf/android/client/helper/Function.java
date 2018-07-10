@@ -7,4 +7,5 @@ package it.eng.hlf.android.client.helper;
  */
 public enum Function {
     //storeProcessStepResult, storeProcessStepRouting, getProcessStepRouting, getProcessStepResult, getProcessStep
+    getData, putData
 }
