@@ -13,9 +13,12 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.github.jitpack:android-example:1.0.1'
     }
 }
-apply plugin: 'com.android.library'
+//apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.ascatox'
 android {
     compileSdkVersion 26
 
