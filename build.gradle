@@ -9,6 +9,7 @@ buildscript {
     repositories {
         jcenter()
       //  google()
+        maven { url 'https://jitpack.io' }
         mavenCentral()
     }
     dependencies {
@@ -16,7 +17,7 @@ buildscript {
         classpath 'com.github.jitpack:android-example:1.0.1'
     }
 }
-//apply plugin: 'com.android.library'
+apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.ascatox'
 android {
@@ -77,9 +78,9 @@ dependencies {
 }
 
 // In this section you declare where to find the dependencies of your project
-repositories {
+//repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-    google()
-}
+   // jcenter()
+   // google()
+//}
