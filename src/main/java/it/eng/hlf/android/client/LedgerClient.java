@@ -7,8 +7,8 @@ import it.eng.hlf.android.client.exception.HLFClientException;
  */
 public interface LedgerClient {
 
-    String getData() throws HLFClientException;
 
-    void putData(String data) throws HLFClientException;
+    String getData(String key) throws HLFClientException;
 
+    void putData(String key, String data) throws HLFClientException;
 }

@@ -55,19 +55,29 @@ final public class FabricLedgerClient implements LedgerClient {
     }
 
     @Override
-    public String getData() throws HLFClientException {
-        return doQueryByJson(Function.getData, new ArrayList<>());
+    public final String getData(String key ) throws HLFClientException {
+        if( key.isEmpty()){
+            throw new HLFClientException(Function.getData.name() + "is in error, No input data!");
+        }
+        List<String> args = new ArrayList<>();
+        args.add(key);
+       return doQueryByJson(Function.getData, args);
     }
 
     @Override
-    public void putData(String data) throws HLFClientException {
-        doInvokeByJson(Function.putData, data);
-
+    public void putData(String key,  String data) throws HLFClientException {
+        if( data == null){
+            throw new HLFClientException((Function.putData.name() + "is in error, No input data!"));
+        }
+        List<String> stringArrayList = new ArrayList<>();
+        stringArrayList.add(key);
+        stringArrayList.add(data);
+        final String payload = doInvokeByJson(Function.putData, stringArrayList);
+        log.debug("Payload retrieved: " + payload);
     }
 
-    private String doInvokeByJson(Function fcn, String data) throws HLFClientException {
-        List<String> args = new ArrayList<>();
-        args.add(data);
+
+    private String doInvokeByJson(Function fcn, List<String> args) throws HLFClientException {
         final InvokeReturn invokeReturn = ledgerInteractionHelper.invokeChaincode(fcn.name(), args);
         try {
             log.debug("BEFORE -> Store Completable Future at " + System.currentTimeMillis());
