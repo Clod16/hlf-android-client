@@ -30,19 +30,19 @@ public class ConfigManager {
     private Configuration configuration;
     private static ConfigManager ourInstance;
 
-    private ConfigManager(Context context) {
-        this.configuration = loadConfigurationFromJSONFile(context);
+    private ConfigManager() {
+        this.configuration = loadConfigurationFromJSONFile();
     }
 
     public Configuration getConfiguration() {
         return this.configuration;
     }
 
-    public static ConfigManager getInstance(Context context) throws HLFClientException, InvalidArgumentException {
+    public static ConfigManager getInstance() throws HLFClientException, InvalidArgumentException {
         if (ourInstance == null) { //1
             synchronized (ConfigManager.class) {
                 if (ourInstance == null) {  //2
-                    ourInstance = new ConfigManager(context);
+                    ourInstance = new ConfigManager();
                 }
             }
         }
@@ -50,13 +50,12 @@ public class ConfigManager {
     }
 
 
-    private Configuration loadConfigurationFromJSONFile(Context context) {
+    private Configuration loadConfigurationFromJSONFile() {
         try {
-            InputStream resource = ExternalStorageReader.getConfigurationFile(context);
+            InputStream resource = ExternalStorageReader.getConfigurationFile();
             ObjectMapper objectMapper = new ObjectMapper();
             Configuration configuration = objectMapper.readValue(resource, Configuration.class);
             //log.debug("Configuration JSON is\n" + resource.getPath());
-            configuration.setContext(context);
             return configuration;
         } catch (Exception e) {
             log.error(e.getMessage());

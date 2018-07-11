@@ -52,8 +52,8 @@ public class Utils {
         return false;
     }
 
-    public static File findFileSk(Context context, String domainName, String user, String cryptoDir) throws HLFClientException {
-        File directory = ExternalStorageReader.getSkConfigPath(context, domainName, user, cryptoDir);
+    public static File findFileSk(String domainName, String user, String cryptoDir) throws HLFClientException {
+        File directory = ExternalStorageReader.getSkConfigPath( domainName, user, cryptoDir);
         File[] matches = directory.listFiles((dir, name) -> name.endsWith("_sk"));
 
         if (null == matches) {

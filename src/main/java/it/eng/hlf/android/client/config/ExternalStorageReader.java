@@ -29,30 +29,28 @@ public class ExternalStorageReader {
         return false;
     }
 
-    public static InputStream getConfigurationFile(Context context) throws FileNotFoundException, HLFClientException {
+    public static InputStream getConfigurationFile() throws FileNotFoundException, HLFClientException {
         if (!isExternalStorageReadable())
             throw new HLFClientException("External Storage not available!");
         FileInputStream fileInputStream = new FileInputStream(new File(EXTERNAL_STORAGE_PATH + "config-fabric-network.json"));
         return fileInputStream;
     }
 
-    public static File getSkConfigPath(Context context, String domainName, String user, String cryptoDir) throws HLFClientException {
+    public static File getSkConfigPath(String domainName, String user, String cryptoDir) throws HLFClientException {
         if (!isExternalStorageReadable())
             throw new HLFClientException("External Storage not available!");
         String usersPath = format("/users/" + user + "@%s/msp/keystore/", domainName);
         String path = cryptoDir + "/peerOrganizations/" + domainName + usersPath;
-        //return context.getDir(path, 0);
         File dir = new File(path);
         return dir;
     }
 
-    public static File getCertConfigPath(Context context, String domainName, String user, String cryptoDir) throws HLFClientException {
+    public static File getCertConfigPath(String domainName, String user, String cryptoDir) throws HLFClientException {
         if (!isExternalStorageReadable())
             throw new HLFClientException("External Storage not available!");
         String usersPath = format("/users/Admin@%s/msp/signcerts/" + user + "@%s-cert.pem", domainName,
                 domainName);
         String path = cryptoDir + "/peerOrganizations/" + domainName + usersPath;
-        //return context.getDir(path, 0);
         File dir = new File(path);
         return dir;
     }

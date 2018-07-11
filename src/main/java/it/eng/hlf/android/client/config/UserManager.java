@@ -59,9 +59,9 @@ public class UserManager {
 
     private void doCompleteUser(User user) throws IOException, NoSuchProviderException, NoSuchAlgorithmException, InvalidKeySpecException, HLFClientException {
         user.setMspId(organization.getMspID());
-        File certConfigPath = ExternalStorageReader.getCertConfigPath(this.configuration.getContext(),organization.getDomainName(), user.getName(), configuration.getCryptoconfigdir());
+        File certConfigPath = ExternalStorageReader.getCertConfigPath(organization.getDomainName(), user.getName(), configuration.getCryptoconfigdir());
         String certificate = new String(IOUtils.toByteArray(new FileInputStream(certConfigPath)), ConfigManager.UTF_8);
-        File fileSk = Utils.findFileSk(this.configuration.getContext(), organization.getDomainName(), user.getName(), configuration.getCryptoconfigdir());
+        File fileSk = Utils.findFileSk(organization.getDomainName(), user.getName(), configuration.getCryptoconfigdir());
         PrivateKey privateKey = Utils.getPrivateKeyFromBytes(IOUtils.toByteArray(new FileInputStream(fileSk)));
         user.setEnrollment(new Enrollment(privateKey, certificate));
     }

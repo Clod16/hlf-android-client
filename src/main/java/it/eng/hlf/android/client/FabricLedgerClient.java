@@ -28,14 +28,14 @@ final public class FabricLedgerClient implements LedgerClient {
     private LedgerInteractionHelper ledgerInteractionHelper;
     private ConfigManager configManager;
 
-    public FabricLedgerClient(Context context) throws HLFClientException {
-        doLedgerClient(context);
+    public FabricLedgerClient() throws HLFClientException {
+        doLedgerClient();
     }
 
 
-    private void doLedgerClient(Context context) throws HLFClientException {
+    private void doLedgerClient() throws HLFClientException {
         try {
-            configManager = ConfigManager.getInstance(context);
+            configManager = ConfigManager.getInstance();
             Configuration configuration = configManager.getConfiguration();
             if (null == configuration || null == configuration.getOrganizations() || configuration.getOrganizations().isEmpty()) {
                 log.error("Configuration missing!!! Check you config file!!!");
