@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import it.eng.hlf.android.client.exception.HLFClientException;
+import it.eng.hlf.android.client.utils.Utils;
 
 import static java.lang.String.format;
 
@@ -40,6 +41,8 @@ public class ExternalStorageReader {
         if (!isExternalStorageReadable())
             throw new HLFClientException("External Storage not available!");
         String usersPath = format("/users/" + user + "@%s/msp/keystore/", domainName);
+        if (Utils.isEmpty(cryptoDir))
+            cryptoDir = EXTERNAL_STORAGE_PATH + "crypto-config";
         String path = cryptoDir + "/peerOrganizations/" + domainName + usersPath;
         File dir = new File(path);
         return dir;
@@ -50,6 +53,8 @@ public class ExternalStorageReader {
             throw new HLFClientException("External Storage not available!");
         String usersPath = format("/users/Admin@%s/msp/signcerts/" + user + "@%s-cert.pem", domainName,
                 domainName);
+        if (Utils.isEmpty(cryptoDir))
+            cryptoDir = EXTERNAL_STORAGE_PATH + "crypto-config";
         String path = cryptoDir + "/peerOrganizations/" + domainName + usersPath;
         File dir = new File(path);
         return dir;
