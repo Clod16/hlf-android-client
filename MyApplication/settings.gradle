@@ -1,0 +1,2 @@
+include ':app'
+include ':app', ':hlf-android-client-debug'

@@ -1,0 +1,45 @@
+{
+  "name": "fabric-network",
+  "type": "hlfv1.1",
+  "channelName": "ledgerchannel",
+  "timeout": 5000,
+  "cryptoconfigdir": "/storage/emulated/0/Download/crypto-config",
+  "tls": false,
+  "chaincode": {
+    "path": "analytics-chaincode",
+    "name": "analytics-chaincode",
+    "version": "1.0",
+    "lang": "NODE"
+  },
+  "organizations": [
+    {
+      "domainName": "org1.example.com",
+      "mspID": "Org1MSP",
+      "peers": [
+        {
+          "name": "peer0.org1.example.com",
+          "requestURL": "grpc://10.0.2.2:7051",
+          "eventURL": "grpc://10.0.2.2:7053"
+        }
+      ],
+      "ca": {
+        "url": "http://10.0.2.2:7054",
+        "name": "ca.example.com"
+      },
+      "orderers": [
+        {
+          "name": "orderer.example.com",
+          "url": "grpc://10.0.2.2:7050"
+        }
+      ],
+      "users": [
+        {
+          "name": "Admin",
+          "roles": [
+            "admin"
+          ]
+        }
+      ]
+    }
+  ]
+}
